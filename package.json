@@ -1,8 +1,8 @@
 {
-  "name": "remota",
-  "productName": "remota",
+  "name": "remotaa",
+  "productName": "Remotaa",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A Remote Keyboard for Your Computer",
   "main": "src/index.js",
   "scripts": {
     "dev": "electron .",
