@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>REMOTAA!</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" /> -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * self blob: data: gap:; style-src * self 'unsafe-inline' blob: data: gap:; script-src * 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src * 'self' blob: data: gap:; img-src * self 'unsafe-inline' blob: data: gap:; connect-src self * 'unsafe-inline' blob: data: gap:; frame-src * self blob: data: gap:;">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
@@ -73,15 +74,26 @@
             box-shadow: 0 0 10px #000;
             outline: none;
         }   
+        .hide {
+            display: none;
+        }
+        #fullPage{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background: #fff;
+        }
     </style>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
-    
 </head>
 <body class="flex-col" style="width: 100vw; height: 100vh; overflow: hidden; overflow-y: auto; row-gap: 10px;">
     <p style="font-size: 1.5rem;">REMOTAA!</p>
     <p style="font-size: 0.8rem;" id="idHere">A Remote for Your Computer.</p>
    <!-- style="background: #fff; border: none; outline: none; padding: 10px; border-radius: 4px;" -->
+   
    <button class="ripple" style="margin-top: 20px; margin-bottom: 20px;" id="runBtn">
         <i class="material-icons" style="font-size: 2rem; margin-bottom: 10px;">
             settings_remote
@@ -89,6 +101,24 @@
         <p style="font-size: 0.5rem; font-weight: bold; letter-spacing: 2px;">Connect <br /> Server</p>
     </button>
     <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">Powered By <a href="https://github.com/tam11a" target="_blank" style="color: aqua; text-decoration: none;">Tam</a>.</p>
+
+    <div id="fullPage" class="flex-col hide">
+        <div style="flex: 1" class="flex-col">
+            <div id="qrcode"></div>
+        </div>
+        <div style="width: 100vw; padding: 10px; row-gap: 4px; background-color: #0b1018;" class="flex-col">
+            <p style="font-size: 0.7rem;">OR</p>
+            <p style="font-size: 0.7rem;">COPY FROM HERE</p>
+            <p id="copyZone"></p>
+            <button class="ripple" style="margin-top: 20px; margin-bottom: 20px;" id="disconnectBtn">
+                <i class="material-icons" style="font-size: 2rem; margin-bottom: 10px;">
+                    phonelink_erase
+                </i>
+                <p style="font-size: 0.5rem; font-weight: bold; letter-spacing: 2px;">Disconnect <br /> Server</p>
+            </button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="renderer.js"></script>
   </body>
 </body>
